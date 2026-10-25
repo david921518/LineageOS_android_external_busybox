@@ -133,7 +133,7 @@ LOCAL_ASFLAGS := $(BUSYBOX_AFLAGS)
 LOCAL_MODULE := libbusybox
 LOCAL_MODULE_TAGS := optional
 LOCAL_STATIC_LIBRARIES := libcutils libc libm libselinux
-LOCAL_ADDITIONAL_DEPENDENCIES := $(busybox_prepare_minimal)
+LOCAL_REQUIRED_MODULES := $(busybox_prepare_minimal)
 include $(BUILD_STATIC_LIBRARY)
 
 
@@ -153,8 +153,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
 LOCAL_SHARED_LIBRARIES := libc libcutils libm
 LOCAL_STATIC_LIBRARIES := libclearsilverregex libuclibcrpc libselinux
-LOCAL_ADDITIONAL_DEPENDENCIES := $(busybox_prepare_full) busybox_links
-LOCAL_CLANG := false
+LOCAL_REQUIRED_MODULES := $(busybox_prepare_full) busybox_links
 
 BUSYBOX_BINARY := $(LOCAL_MODULE)
 include $(BUILD_EXECUTABLE)
@@ -205,9 +204,8 @@ LOCAL_STATIC_LIBRARIES := libclearsilverregex libc libcutils libm libuclibcrpc l
 LOCAL_MODULE_CLASS := UTILITY_EXECUTABLES
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/utilities
 LOCAL_UNSTRIPPED_PATH := $(PRODUCT_OUT)/symbols/utilities
-LOCAL_ADDITIONAL_DEPENDENCIES := $(busybox_prepare_full)
+LOCAL_REQUIRED_MODULES := $(busybox_prepare_full)
 LOCAL_PACK_MODULE_RELOCATIONS := false
-LOCAL_CLANG := false
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
@@ -233,7 +231,6 @@ LOCAL_STATIC_LIBRARIES := libclearsilverregex libc libcutils libm libuclibcrpc l
 LOCAL_MODULE_CLASS := UTILITY_EXECUTABLES
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/utilities
 LOCAL_UNSTRIPPED_PATH := $(PRODUCT_OUT)/symbols/utilities
-LOCAL_ADDITIONAL_DEPENDENCIES := $(busybox_prepare_minimal)
+LOCAL_REQUIRED_MODULES := $(busybox_prepare_minimal)
 LOCAL_PACK_MODULE_RELOCATIONS := false
-LOCAL_CLANG := false
 include $(BUILD_EXECUTABLE)
