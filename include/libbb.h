@@ -128,6 +128,8 @@
 # include <netinet/in.h>
 #else
 # include <arpa/inet.h>
+/* FIXME: This breaks on bionic */
+#if 0
 # if !defined(__socklen_t_defined) && !defined(_SOCKLEN_T_DECLARED)
 /* We #define socklen_t *after* includes, otherwise we get
  * typedef redefinition errors from system headers
@@ -136,6 +138,7 @@
 #  define socklen_t bb_socklen_t
    typedef unsigned socklen_t;
 # endif
+#endif
 #endif
 #ifndef HAVE_CLEARENV
 # define clearenv() do { if (environ) environ[0] = NULL; } while (0)
