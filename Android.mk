@@ -102,6 +102,8 @@ BUSYBOX_CFLAGS = \
 	-D'CONFIG_DEFAULT_MODULES_DIR="$(KERNEL_MODULES_DIR)"' \
 	-D'BB_VER="$(strip $(shell $(SUBMAKE) kernelversion)) $(BUSYBOX_SUFFIX)"' -DBB_BT=AUTOCONF_TIMESTAMP
 
+BUSYBOX_CFLAGS += -Wno-unused-variable -Wno-unused-parameter
+
 ifeq ($(BIONIC_L),true)
     BUSYBOX_CFLAGS += -DBIONIC_L
     BUSYBOX_AFLAGS += -DBIONIC_L
