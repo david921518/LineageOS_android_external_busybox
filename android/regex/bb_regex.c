@@ -2928,7 +2928,10 @@ bb_re_compile_fastmap (bufp)
   char *destination;
 #endif
   /* We don't push any register information onto the failure stack.  */
+  /* FIXME: fix -Wused-variable */
+#if 0
   unsigned num_regs = 0;
+#endif
 
   register char *fastmap = bufp->fastmap;
   unsigned char *pattern = bufp->buffer;
@@ -5502,6 +5505,10 @@ bb_regerror (errcode, preg, errbuf, errbuf_size)
       else
 	strcpy (errbuf, msg);
     }
+
+  /* FIXME: fix -Wused-parameter */
+  if (preg != NULL)
+    return msg_size;
 
   return msg_size;
 }
